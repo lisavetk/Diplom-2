@@ -9,6 +9,4 @@ public class Endpoints {
 
     public static final String API_DELETE_USER = "/api/auth/user";
     public static final String API_GET_INGREDIENTS = "/api/ingredients";
-    public static final String API_GET_ALL_ORDERS = "/api/orders/all";
-    public static final String API_GET_USERS_ORDERS = "/api/orders";
 }
