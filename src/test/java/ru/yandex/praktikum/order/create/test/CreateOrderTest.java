@@ -1,6 +1,7 @@
 package ru.yandex.praktikum.order.create.test;
 
 import io.qameta.allure.Description;
+import io.qameta.allure.Step;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
 import io.restassured.config.LogConfig;
@@ -22,40 +23,28 @@ import static org.junit.Assert.*;
 import static ru.yandex.praktikum.config.TestsConstants.CREATE_ORDER_FIELD_MESSAGE_NULL_INGREDIENTS;
 import static ru.yandex.praktikum.config.TestsMessage.*;
 
-@DisplayName("Create order")
+@DisplayName("Create order with auth")
 public class CreateOrderTest {
     OrderSteps orderSteps = new OrderSteps();
     String accessToken;
     UserSteps userSteps = new UserSteps();
 
     @Before
+    @Step("Create user")
     public void setUp() {
         RestAssured.config = RestAssured.config()
                 .logConfig(LogConfig.logConfig().enableLoggingOfRequestAndResponseIfValidationFails());
+        CreateUserRequest createUserRequest = GeneratorUser.getRandomUser();
+        accessToken = userSteps.createUser(createUserRequest).path("accessToken");
     }
 
-    @Test
-    @DisplayName("Create order without auth, data is valid")
-    @Description("Return 200 OK and valid response")
-    public void createOrderReturn200WithoutAuthDataIsValid() {
-        CreateOrderRequest request = GeneratorOrder.getOrder();
-        Response response = orderSteps.createOrder(request);
-        response.then().statusCode(SC_OK);
-
-        CreateOrderSuccessResponse createOrderSuccessResponse = response.as(CreateOrderSuccessResponse.class);
-        assertNotNull(MESSAGE_ORDER_NAME_IS_NULL, createOrderSuccessResponse.getName());
-        assertNotNull(MESSAGE_ORDER_NUMBER_IS_NULL, createOrderSuccessResponse.getOrder().getNumber());
-        assertNotNull(MESSAGE_ORDER_IS_NULL, createOrderSuccessResponse.getOrder());
-        assertTrue(MESSAGE_SUCCESS_IS_NOT_TRUE, createOrderSuccessResponse.isSuccess());
-    }
+    //выделила в отдельный класс тесты, которые с авторизацией, т.к. создание пользователя перенесено в @before
+    //сделано на основе документации "Только авторизованные пользователи могут делать заказы"
 
     @Test
     @DisplayName("Create order with auth, data is valid")
     @Description("Return 200 OK and valid response")
     public void createOrderReturn200WithAuthDataIsValid() {
-        CreateUserRequest createUserRequest = GeneratorUser.getRandomUser();
-        accessToken = userSteps.createUser(createUserRequest).path("accessToken");
-
         CreateOrderRequest request = GeneratorOrder.getOrder();
         Response response = orderSteps.createOrder(request, accessToken);
         response.then().statusCode(SC_OK);
@@ -72,7 +61,7 @@ public class CreateOrderTest {
     @Description("Return 400 Bad Request and valid response")
     public void createOrderReturn400WithNullIngredients() {
         CreateOrderRequest request = GeneratorOrder.getOrderWithoutIngredients();
-        Response response = orderSteps.createOrder(request);
+        Response response = orderSteps.createOrder(request, accessToken);
         response.then().statusCode(SC_BAD_REQUEST);
 
         CreateOrderBadRequestResponse createOrderBadRequestResponse = response.as(CreateOrderBadRequestResponse.class);
@@ -86,7 +75,7 @@ public class CreateOrderTest {
     @Description("Return 500 Internal Server Error")
     public void createOrderReturn500WithInvalidHashIngredients() {
         CreateOrderRequest request = GeneratorOrder.getOrderWithInvalidHashIngredient();
-        Response response = orderSteps.createOrder(request);
+        Response response = orderSteps.createOrder(request, accessToken);
         response.then().statusCode(SC_INTERNAL_SERVER_ERROR);
     }
 
