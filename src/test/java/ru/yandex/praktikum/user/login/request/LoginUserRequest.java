@@ -1,4 +1,4 @@
-package ru.yandex.praktikum.user.create;
+package ru.yandex.praktikum.user.login.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,9 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateUserRequest {
+public class LoginUserRequest {
     private String email;
     private String password;
-    private String name;
-
 }

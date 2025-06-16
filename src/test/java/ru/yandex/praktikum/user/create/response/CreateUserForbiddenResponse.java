@@ -1,4 +1,4 @@
-package ru.yandex.praktikum.user.create;
+package ru.yandex.praktikum.user.create.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

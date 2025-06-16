@@ -3,13 +3,14 @@ package ru.yandex.praktikum.order.create;
 import io.qameta.allure.Step;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import ru.yandex.praktikum.order.create.request.CreateOrderRequest;
 
 import static io.restassured.RestAssured.given;
-import static ru.yandex.praktikum.Endpoints.*;
+import static ru.yandex.praktikum.config.Endpoints.*;
 
 public class OrderSteps {
 
-    @Step("Send POST request to /api/orders with authorization")
+    @Step("Send POST request to /api/orders without authorization")
     public Response createOrder(CreateOrderRequest request) {
         return given()
                 .contentType(ContentType.JSON)
@@ -19,7 +20,7 @@ public class OrderSteps {
                 .post(API_CREATE_ORDER);
     }
 
-    @Step("Send POST request to /api/orders without authorization")
+    @Step("Send POST request to /api/orders with authorization")
     public Response createOrder(CreateOrderRequest request, String accessToken) {
         return given()
                 .contentType(ContentType.JSON)

@@ -1,8 +1,8 @@
-package ru.yandex.praktikum.user;
+package ru.yandex.praktikum.user.data;
 
 import io.qameta.allure.Step;
 import org.apache.commons.lang3.RandomStringUtils;
-import ru.yandex.praktikum.user.create.CreateUserRequest;
+import ru.yandex.praktikum.user.create.request.CreateUserRequest;
 
 public class GeneratorUser {
 

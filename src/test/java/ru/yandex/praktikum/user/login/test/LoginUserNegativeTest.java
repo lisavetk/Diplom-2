@@ -1,4 +1,4 @@
-package ru.yandex.praktikum.user.login;
+package ru.yandex.praktikum.user.login.test;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
@@ -10,14 +10,16 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import ru.yandex.praktikum.user.GeneratorUser;
+import ru.yandex.praktikum.user.data.GeneratorUser;
 import ru.yandex.praktikum.user.UserSteps;
-import ru.yandex.praktikum.user.create.CreateUserRequest;
+import ru.yandex.praktikum.user.create.request.CreateUserRequest;
+import ru.yandex.praktikum.user.login.request.LoginUserRequest;
+import ru.yandex.praktikum.user.login.response.LoginUserUnauthorizedResponse;
 
 import static org.apache.http.HttpStatus.SC_UNAUTHORIZED;
 import static org.junit.Assert.*;
-import static ru.yandex.praktikum.TestsConstants.LOGIN_USER_FIELD_MESSAGE_INVALID_DATA;
-import static ru.yandex.praktikum.TestsMessage.*;
+import static ru.yandex.praktikum.config.TestsConstants.LOGIN_USER_FIELD_MESSAGE_INVALID_DATA;
+import static ru.yandex.praktikum.config.TestsMessage.*;
 
 @DisplayName("Login user with invalid data")
 @RunWith(Parameterized.class)

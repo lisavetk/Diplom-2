@@ -1,7 +1,9 @@
-package ru.yandex.praktikum.order.create;
+package ru.yandex.praktikum.order.create.data;
 
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
+import ru.yandex.praktikum.order.create.OrderSteps;
+import ru.yandex.praktikum.order.create.request.CreateOrderRequest;
 
 import java.util.ArrayList;
 import java.util.List;

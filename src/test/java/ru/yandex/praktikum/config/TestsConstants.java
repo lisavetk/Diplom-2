@@ -1,4 +1,4 @@
-package ru.yandex.praktikum;
+package ru.yandex.praktikum.config;
 
 public class TestsConstants {
     public static final String CREATE_USER_FIELD_MESSAGE_EXISTS_DATA = "User already exists";

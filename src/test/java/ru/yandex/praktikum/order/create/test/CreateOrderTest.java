@@ -1,4 +1,4 @@
-package ru.yandex.praktikum.order.create;
+package ru.yandex.praktikum.order.create.test;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
@@ -8,14 +8,19 @@ import io.restassured.response.Response;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import ru.yandex.praktikum.user.GeneratorUser;
+import ru.yandex.praktikum.order.create.data.GeneratorOrder;
+import ru.yandex.praktikum.order.create.OrderSteps;
+import ru.yandex.praktikum.order.create.request.CreateOrderRequest;
+import ru.yandex.praktikum.order.create.response.CreateOrderBadRequestResponse;
+import ru.yandex.praktikum.order.create.response.CreateOrderSuccessResponse;
+import ru.yandex.praktikum.user.data.GeneratorUser;
 import ru.yandex.praktikum.user.UserSteps;
-import ru.yandex.praktikum.user.create.CreateUserRequest;
+import ru.yandex.praktikum.user.create.request.CreateUserRequest;
 
 import static org.apache.http.HttpStatus.*;
 import static org.junit.Assert.*;
-import static ru.yandex.praktikum.TestsConstants.CREATE_ORDER_FIELD_MESSAGE_NULL_INGREDIENTS;
-import static ru.yandex.praktikum.TestsMessage.*;
+import static ru.yandex.praktikum.config.TestsConstants.CREATE_ORDER_FIELD_MESSAGE_NULL_INGREDIENTS;
+import static ru.yandex.praktikum.config.TestsMessage.*;
 
 @DisplayName("Create order")
 public class CreateOrderTest {

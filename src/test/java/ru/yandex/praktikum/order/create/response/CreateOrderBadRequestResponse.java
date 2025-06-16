@@ -1,4 +1,4 @@
-package ru.yandex.praktikum.order.create;
+package ru.yandex.praktikum.order.create.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

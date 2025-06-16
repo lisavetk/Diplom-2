@@ -3,11 +3,11 @@ package ru.yandex.praktikum.user;
 import io.qameta.allure.Step;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import ru.yandex.praktikum.user.create.CreateUserRequest;
-import ru.yandex.praktikum.user.login.LoginUserRequest;
+import ru.yandex.praktikum.user.create.request.CreateUserRequest;
+import ru.yandex.praktikum.user.login.request.LoginUserRequest;
 
 import static io.restassured.RestAssured.given;
-import static ru.yandex.praktikum.Endpoints.*;
+import static ru.yandex.praktikum.config.Endpoints.*;
 
 public class UserSteps {
 

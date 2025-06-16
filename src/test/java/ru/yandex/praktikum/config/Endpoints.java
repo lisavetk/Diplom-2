@@ -1,4 +1,4 @@
-package ru.yandex.praktikum;
+package ru.yandex.praktikum.config;
 
 public class Endpoints {
     public static final String BASE_URL = "https://stellarburgers.nomoreparties.site";

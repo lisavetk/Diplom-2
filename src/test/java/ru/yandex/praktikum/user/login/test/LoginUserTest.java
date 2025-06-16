@@ -1,4 +1,4 @@
-package ru.yandex.praktikum.user.login;
+package ru.yandex.praktikum.user.login.test;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
@@ -8,13 +8,15 @@ import io.restassured.response.Response;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import ru.yandex.praktikum.user.GeneratorUser;
+import ru.yandex.praktikum.user.data.GeneratorUser;
 import ru.yandex.praktikum.user.UserSteps;
-import ru.yandex.praktikum.user.create.CreateUserRequest;
+import ru.yandex.praktikum.user.create.request.CreateUserRequest;
+import ru.yandex.praktikum.user.login.request.LoginUserRequest;
+import ru.yandex.praktikum.user.login.response.LoginUserSuccessResponse;
 
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.junit.Assert.*;
-import static ru.yandex.praktikum.TestsMessage.*;
+import static ru.yandex.praktikum.config.TestsMessage.*;
 
 @DisplayName("Login user")
 public class LoginUserTest {

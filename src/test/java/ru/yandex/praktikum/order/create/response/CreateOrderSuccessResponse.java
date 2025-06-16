@@ -1,4 +1,4 @@
-package ru.yandex.praktikum.order.create;
+package ru.yandex.praktikum.order.create.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;

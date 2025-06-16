@@ -1,4 +1,4 @@
-package ru.yandex.praktikum.user.create;
+package ru.yandex.praktikum.user.create.test;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
@@ -8,13 +8,16 @@ import org.junit.Before;
 import org.junit.Test;
 import io.restassured.RestAssured;
 import io.restassured.config.LogConfig;
-import ru.yandex.praktikum.user.GeneratorUser;
+import ru.yandex.praktikum.user.data.GeneratorUser;
 import ru.yandex.praktikum.user.UserSteps;
+import ru.yandex.praktikum.user.create.response.CreateUserForbiddenResponse;
+import ru.yandex.praktikum.user.create.response.CreateUserSuccessResponse;
+import ru.yandex.praktikum.user.create.request.CreateUserRequest;
 
 import static org.apache.http.HttpStatus.*;
 import static org.junit.Assert.*;
-import static ru.yandex.praktikum.TestsConstants.CREATE_USER_FIELD_MESSAGE_EXISTS_DATA;
-import static ru.yandex.praktikum.TestsMessage.*;
+import static ru.yandex.praktikum.config.TestsConstants.CREATE_USER_FIELD_MESSAGE_EXISTS_DATA;
+import static ru.yandex.praktikum.config.TestsMessage.*;
 
 @DisplayName("Create user")
 public class CreateUserTest {
